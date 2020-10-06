@@ -79,10 +79,23 @@ app.get('/api/user_posts', (req, res) => {
 //user logout.........
 
 app.get('/api/logout', auth, (req, res) => {
-	res.send(req.user);
+	// console.log(req);
+	// res.send(req.user);
 	req.user.deleteToken(req.token, (err, user) => {
 		if (err) return res.status(400).send(err);
 		res.sendStatus(200);
+	});
+});
+
+//user authencaction for every route.....
+
+app.get('/api/auth', auth, (req, res) => {
+	res.json({
+		isAuth: true,
+		id: req.user._id,
+		email: req.user.email,
+		name: req.user.name,
+		lastname: req.user.lastname
 	});
 });
 

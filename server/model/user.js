@@ -77,9 +77,9 @@ userSchema.methods.generateToken = function(cb) {
 
 //creating own  static method like FindById ...........
 
-userSchema.static.FindByToken = function(token, cb) {
+userSchema.statics.findByToken = function(token, cb) {
 	jwt.verify(token, config.SECRET, (err, decode) => {
-		this.FindOne({ _id: decode, token: token }, (err, user) => {
+		this.findOne({ _id: decode, token: token }, (err, user) => {
 			if (err) return cb(err);
 			cb(null, user);
 		});
