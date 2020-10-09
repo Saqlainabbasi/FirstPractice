@@ -26,7 +26,7 @@ app.get('/api/getBook', (req, res) => {
 	const id = req.query.id;
 
 	Book.findById(id, (err, doc) => {
-		if (err) return res.status(400).send(err);
+		if (err) return res.status(400).json(err);
 		res.send(doc);
 	});
 });
