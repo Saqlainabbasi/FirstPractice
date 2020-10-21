@@ -75,6 +75,7 @@ userSchema.methods.generateToken = function(cb) {
 	});
 };
 
+//jwt: json web token...
 //creating own  static method like FindById ...........
 
 userSchema.statics.findByToken = function(token, cb) {

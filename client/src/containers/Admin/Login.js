@@ -11,6 +11,12 @@ class Login extends Component {
         success:false
     }
 
+    componentWillReceiveProps(nextProps){
+        if(nextProps.user.login.isAuth){
+            this.props.history.push('/user')
+        }
+    }
+
     handleInputEmail = (event)=> {
         this.setState({email:event.target.value})
     }
@@ -25,6 +31,7 @@ class Login extends Component {
     }
 
     render() {
+        let user = this.props.user;
         return (
             <div className='rl_container'>
                 <form onSubmit={this.submitForm}>
@@ -48,6 +55,15 @@ class Login extends Component {
                         />
                     </div>
                     <button type='submit' >Login</button>
+                    <div className='error'>
+                        {
+                            user.login ? 
+                            
+                                <div>{user.login.message}</div>
+
+                            :null
+                        }
+                    </div>
                 </form>
             </div>
         );

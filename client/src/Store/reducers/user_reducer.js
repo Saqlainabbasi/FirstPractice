@@ -4,6 +4,15 @@ export default function(state = {}, action) {
 			return{
 				...state, login:action.payload
 			}
+		case 'User_Auth':
+			return{
+				...state, login:action.payload
+			}
+
+		case 'User_Post':
+			return{
+				...state, userPosts:action.payload
+			}
 		default:
 			return state;
 	}

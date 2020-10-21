@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const config = require('./config/config').get(process.env.NODE_ENV);
 const app = express();
 
-//mongoose configurations and connection setup..........
+//mongoose database configurations and connection setup..........
 mongoose.Promise = global.Promise;
 mongoose.connect(config.DATABASE, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -20,7 +20,9 @@ app.use(cookieParser());
 
 //making the Routes.........
 
-//.......GET----------
+//.......GET requests----------
+
+// to get one book using _id ..............
 
 app.get('/api/getBook', (req, res) => {
 	const id = req.query.id;
@@ -31,7 +33,7 @@ app.get('/api/getBook', (req, res) => {
 	});
 });
 
-// to get more them one book..............
+// to get more then one book..............
 
 app.get('/api/getBooks', (req, res) => {
 	const skip = parseInt(req.query.skip);
@@ -59,7 +61,7 @@ app.get('/api/getReviewer', (req, res) => {
 });
 
 //get all users....
-
+//** .find({},cb) */ this method is use to get all the data of the model specified
 app.get('/api/users', (req, res) => {
 	User.find({}, (err, user) => {
 		if (err) return res.status(400).send(err);
@@ -68,7 +70,7 @@ app.get('/api/users', (req, res) => {
 });
 
 //get user or reviewer posts on Books.....
-
+// here in these {} we specify the data through which we want to find the data......
 app.get('/api/user_posts', (req, res) => {
 	Book.find({ ownerId: req.query.user }).exec((err, docs) => {
 		if (err) return res.status(400).send(err);
@@ -102,6 +104,7 @@ app.get('/api/auth', auth, (req, res) => {
 //.......**************Post************----------///
 
 app.post('/api/book', (req, res) => {
+	//creating the refrence to the book model.....
 	const book = new Book(req.body);
 	book.save((err, doc) => {
 		if (err) return res.status(400).send(err);

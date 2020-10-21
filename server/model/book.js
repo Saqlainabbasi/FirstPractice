@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+//creating the Schema using the mongoose.Schema method.......
+//**timestamps */this will record the entry time and date of the data entered with thr record
 const bookSchema = mongoose.Schema(
 	{
 		name: {
@@ -36,7 +38,7 @@ const bookSchema = mongoose.Schema(
 	{ timestamps: true }
 );
 
-//creating the model.....
+//creating the model using the mongoose.model method.....
 
 const Book = mongoose.model('Book', bookSchema);
 

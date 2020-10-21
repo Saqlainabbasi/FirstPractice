@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {getBookWithReviewer,clearBookWithReviewer} from '../../Store/actions'
 
-
+//display the details of thr book clicked........
 class BookView extends Component {
     
     componentWillMount(){

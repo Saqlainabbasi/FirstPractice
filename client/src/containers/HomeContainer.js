@@ -5,7 +5,7 @@ import BookItem from '../widgetsUI/BookItem';
 
 class HomeContainer extends Component {
 	componentWillMount() {
-		this.props.dispatch(getBooks(1, 0, 'desc'));
+		this.props.dispatch(getBooks(3, 0, 'desc'));
 	}
 
 	renderBooks = (books) => {
@@ -18,13 +18,13 @@ class HomeContainer extends Component {
 	}
 
 	render() {
-		console.log(this.props);
+			console.log(this.props);
 		return <div>
 			{this.renderBooks(this.props.books)}
 			<div
 			 className='loadmore'
 			 onClick={this.loadmore}
-			>Load More</div>
+			 >Load More</div>
 			</div>;
 	}
 }
