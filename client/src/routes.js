@@ -9,6 +9,7 @@ import Auth from './hoc/auth'
 import User from './components/Admin';
 import AddReview from './containers/Admin/AddReview';
 import UserPost from './components/Admin/UserPost';
+import EditReview from './containers/Admin/EditReview';
 
 // eslint-disable-next-line
 //switch statement will pass as children props to the Layout component
@@ -21,6 +22,7 @@ const Routes = () => {
 				<Route exact path="/login" component={Auth(Login,false)} />
 				<Route exact path="/user" component={Auth(User,true)} />
 				<Route exact path="/user/add" component={Auth(AddReview,true)} />
+				<Route exact path="/user/edit-post/:id" component={Auth(EditReview,true)} />
 				<Route exact path="/books/:id" component={Auth(BooksView,null)} />
 				<Route exact path="/user/user-reviews" component={Auth(UserPost,true)} />
 

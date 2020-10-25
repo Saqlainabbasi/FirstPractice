@@ -19,6 +19,24 @@ export function getBooks(limit = 10, skip = 0, order = 'desc', list = '') {
 	};
 };
 
+export const getBook = (id)=> {
+	const request = axios.get(`/api/getBook?id=${id}`)
+					.then(response => response.data)
+	return{
+		type:'Get_Book',
+		payload: request
+	}
+}
+
+export const deleteBook = (id)=> {
+	const request = axios.delete(`/api/delete_book?id=${id}`)
+			.then(response => response.data)
+	return{
+		type:'Delete_Book',
+		payload: request
+	}
+}
+
 //action to get the data of the book with the reviewer.....
 
 export function getBookWithReviewer(id) {
@@ -70,6 +88,16 @@ export const addBookReview = (books)=> {
 					.then(response => response.data)
 	return{
 		type:"Add_Book",
+		payload:request
+	}
+}
+
+export const updateBookReview = (data)=> {
+
+	const request = axios.post('/api/book_update',data)
+					.then(response => response.data)
+	return{
+		type:'Update_B_Review',
 		payload:request
 	}
 }

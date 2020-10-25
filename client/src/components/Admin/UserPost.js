@@ -11,11 +11,11 @@ class UserPost extends Component {
     }
 
     showPosts = (user) => (
-        user.userPosts?
+        user.userPosts ?
             user.userPosts.map((item)=>(
               <tr key={item._id}>
                   <td>
-                      <Link to={`/user/edit_post/${item._id}`} >
+                      <Link to={`/user/edit-post/${item._id}`} >
                           {item.name}
                       </Link>
 
