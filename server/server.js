@@ -5,11 +5,6 @@ const mongoose = require('mongoose');
 const config = require('./config/config').get(process.env.NODE_ENV);
 const app = express();
 
-//importing the routes..............
-
-const userRoutes = require('./routes/userRoutes');
-const bookRoutes = require('./routes/bookRoutes');
-const authRoute = require('./routes/authRoute');
 
 //mongoose database configurations and connection setup..........
 mongoose.Promise = global.Promise;
@@ -20,6 +15,11 @@ mongoose.connect(config.DATABASE, { useNewUrlParser: true, useUnifiedTopology: t
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+//importing the routes..............
+
+const userRoutes = require('./routes/userRoutes');
+const bookRoutes = require('./routes/bookRoutes');
+const authRoute = require('./routes/authRoute');
 
 //making the Routes.........
 
