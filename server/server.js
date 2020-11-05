@@ -8,7 +8,7 @@ const app = express();
 
 //mongoose database configurations and connection setup..........
 mongoose.Promise = global.Promise;
-mongoose.connect(config.DATABASE, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(config.DATABASE, { useNewUrlParser: true, useUnifiedTopology: true,useCreateIndex: true, });
 
 
 //using the middleware.......

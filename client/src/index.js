@@ -9,6 +9,7 @@ import ReduxThunk from 'redux-thunk';
 import reducers from './Store/reducers';
 import Routes from './routes';
 
+//creating redux store
 const reduxStore = applyMiddleware(promiseMiddleware, ReduxThunk)(createStore);
 
 ReactDom.render(
